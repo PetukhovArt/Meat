@@ -1,0 +1,46 @@
+.board {
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardRow {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.boardWrapper {
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.status {
+    font-family: Montserrat;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.statusWin {
+    color: red;
+}
+
+.button {
+    margin-top: 10px;
+    width: 70px;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+    transition: 0.4s;
+}
