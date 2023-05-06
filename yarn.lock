@@ -2361,16 +2361,9 @@
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@^18.0.0":
+"@types/react-dom@^18.0.0", "@types/react-dom@^18.2.4":
   version "18.2.4"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.2.4.tgz"
-  integrity sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-dom@^18.2.4":
-  version "18.2.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.4.tgz#13f25bfbf4e404d26f62ac6e406591451acba9e0"
   integrity sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==
   dependencies:
     "@types/react" "*"
@@ -5794,7 +5787,7 @@ gh-pages@^5.0.0:
 
 gh@^2.8.9:
   version "2.8.9"
-  resolved "https://registry.npmjs.org/gh/-/gh-2.8.9.tgz"
+  resolved "https://registry.yarnpkg.com/gh/-/gh-2.8.9.tgz#187f3ea1a439ccbeba22732391a525f937ab763f"
   integrity sha512-54uVQqWM2G3b2287OBTcUIoXlagkJbLu8Jh9P2uMjx3CHM0h66ImV268HWMnlZ2zT2T7JySpw6PJDLa536Nl5g==
   dependencies:
     "@octokit/plugin-throttling" "~2.7.0"
@@ -8540,7 +8533,7 @@ package-json@^6.3.0:
 
 pages@^0.0.16:
   version "0.0.16"
-  resolved "https://registry.npmjs.org/pages/-/pages-0.0.16.tgz"
+  resolved "https://registry.yarnpkg.com/pages/-/pages-0.0.16.tgz#d1ce34b2d7d4b613127a83be787c1933bb99c27c"
   integrity sha512-AsJop0MAAMsBw0diJ9DYKl+pN6GPk+w/vR6Zat4XyN0WMRVXYFgTbPOYtPqfbHV/jFOGLGqPu7yVWu53LK4mSA==
   dependencies:
     async "0.2.8"
