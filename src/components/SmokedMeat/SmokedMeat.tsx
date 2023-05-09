@@ -1,24 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import c from './SmokedMeat.module.css';
-import axios from 'axios';
+import sheika from '../../assets/images/copch-products/sheika-vareno-kopchenaya.png';
+import {useDispatch, useSelector} from 'react-redux';
+import {getCopchTC} from '../../redux/smokedMeatReducer';
+import {AppDispatchType, RootStateType, useAppDispatch} from '../../redux/store-redux';
 
-export type ProdType = {
-    id: number
-    name_prod: string
-    unit: string
-    price: string
-}
-export type ProdResponseType = ProdType[]
 
 export const SmokedMeat = (props: any) => {
-
-    const [item, setItem] = useState<ProdResponseType>([]);
+    const copchProduct = useSelector((state: RootStateType) => state.productPage)
+    const dispatch=useAppDispatch()
 
     useEffect(() => {
-        axios.get('http://bibak007.pythonanywhere.com/copch/')
-            .then(res=> {
-                setItem(res.data)
-            })
+        dispatch(getCopchTC())
     }, []);
 
     return <div className={c.smokedMeat}>
@@ -29,20 +22,25 @@ export const SmokedMeat = (props: any) => {
                 <th>Наименование</th>
                 <th>Единица товара</th>
                 <th>Стоимость за ед.</th>
+                <th>Вид товара</th>
             </tr>
             </thead>
             <tbody>
-            {item.map(el=> {
+            {copchProduct.map((el, index) => {
                 return (
-                    <tr>
-                        <td><span>{el.id}</span></td>
+                    <tr key={index+1}>
+                        <td><span>{(index+1)}</span></td>
                         <td><span>{el.name_prod}</span></td>
                         <td><span>{el.unit}</span></td>
                         <td><span>{el.price}</span></td>
+                        <td><img className={c.copchImage}
+                                 src={`${el.copch_file}`}
+                                 alt='copchProductImage'/></td>
                     </tr>
                 )
             })}
             </tbody>
         </table>
+
     </div>
 }
