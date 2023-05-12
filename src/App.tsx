@@ -6,6 +6,7 @@ import {Route, Routes} from 'react-router-dom';
 import {SmokedMeat} from './components/SmokedMeat/SmokedMeat';
 import {SemiFinishedMeat} from './components/SemiFinishedMeat/SemiFinishedMeat';
 import {ColdMeat} from './components/ColdMeat/ColdMeat';
+import {Login} from './components/Login/Login';
 function App  () {
 
     return (
@@ -14,6 +15,7 @@ function App  () {
             <Navbar/>
             <div className={s.appContent}>
                 <Routes>
+                    <Route path="/login" element={<Login/>}/>
                     <Route path="/smokedMeat/*" element={<SmokedMeat/>}/>
                     <Route path="/semiFinishedMeat/*" element={<SemiFinishedMeat/>}/>
                     <Route path="/coldMeat/" element={<ColdMeat/>}/>

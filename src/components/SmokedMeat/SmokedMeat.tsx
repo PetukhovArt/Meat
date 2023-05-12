@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
 import c from './SmokedMeat.module.css';
-import sheika from '../../assets/images/copch-products/sheika-vareno-kopchenaya.png';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCopchTC} from '../../redux/smokedMeatReducer';
-import {AppDispatchType, RootStateType, useAppDispatch} from '../../redux/store-redux';
+import {RootState, useAppDispatch} from '../../redux/store-redux';
 
 
 export const SmokedMeat = (props: any) => {
-    const copchProduct = useSelector((state: RootStateType) => state.productPage)
+    const copchProduct = useSelector((state: RootState) => state.productPage)
     const dispatch=useAppDispatch()
 
     useEffect(() => {
