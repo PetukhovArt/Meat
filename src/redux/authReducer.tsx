@@ -1,6 +1,8 @@
 import {Dispatch} from 'redux';
-import {productsAPI} from '../api/api';
+import {authAPI} from '../api/api';
 import {AppThunk, RootState} from './store-redux';
+import {RegistrFormDataType} from '../components/RegistrationForm/RegistrationReduxForm';
+import {LoginFormDataType} from '../components/LoginForm/LoginReduxForm';
 
 //ACTION CREATORS
 export const getCopchProducts = (products: Array<CopchProductType>) => {
@@ -11,10 +13,26 @@ export type CopchProductsActionTypes = ReturnType<typeof getCopchProducts>
 
 //THUNK CREATORS =======================================================
 
-export const getCopchTC = (): AppThunk => async dispatch => { //async function Thunk
+export const registrationTC = ({...formData}:RegistrFormDataType): AppThunk => async dispatch => { //async function Thunk
     try {
-        const data = await productsAPI.getSmokedProducts() //wait for response
-        dispatch(getCopchProducts(data)) //then dispatch AC to setState
+        const data = await authAPI.reg({...formData}) //wait for response
+        // dispatch(getCopchProducts(data)) //then dispatch AC to setState
+    } catch (e) {
+        throw new Error('fail')
+    }
+}
+export const loginTC = (email: string, password: string): AppThunk => async dispatch => {
+    try {
+        const data = await authAPI.login(email, password)
+        // dispatch(getCopchProducts(data))
+    } catch (e) {
+        throw new Error('fail')
+    }
+}
+export const logoutTC = (): AppThunk => async dispatch => { //async function Thunk
+    try {
+        const data = await authAPI.logout() //wait for response
+        // dispatch(getCopchProducts(data)) //then dispatch AC to setState
     } catch (e) {
         throw new Error('fail')
     }
