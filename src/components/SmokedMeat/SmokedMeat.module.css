@@ -1,13 +1,11 @@
 .smokedMeat {
-    grid-area: smokedMeat;
+    grid-area: content;
+    padding-left: 20px
 }
 
 .smokedMeatTable {
     border-collapse: collapse;
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 20px;
 }
 
 th,
@@ -17,10 +15,15 @@ td {
     border-bottom: 1px solid #ddd;
 }
 
+tr {
+    height: 30px;
+}
+
 th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
+
 .copchImage {
     height: 70px;
 }
