@@ -13,7 +13,7 @@ export type CopchProductsActionTypes = ReturnType<typeof getCopchProducts>
 
 export const getCopchTC = (): AppThunk => async dispatch => { //async function Thunk
     try {
-        const data = await productsAPI.getSmokedProducts() //wait for response
+        const data = await productsAPI.getCopch() //wait for response
         dispatch(getCopchProducts(data)) //then dispatch AC to setState
     } catch (e) {
         throw new Error('fail')
@@ -27,6 +27,7 @@ export type CopchProductType = {
     unit: string
     price: string
     copch_file: string
+    description?: string
 }
 
 let initialState: Array<CopchProductType> = []

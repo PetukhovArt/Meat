@@ -4,11 +4,13 @@
   margin: 0 auto;
   grid-template-areas:
     "header header"
-    "subheader subheader"
-    "nav content";
-  grid-template-rows: 1fr 1fr 10fr;
+    "nav subheader"
+    "nav content"
+    "footer footer";
+  grid-template-rows: 1fr 0.5fr 9.5fr 1fr;
   grid-template-columns: 2fr 10fr;
   gap: 5px;
+  position: relative;
 }
 
 .appContent {

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import Button from '@mui/material/Button';
-import {getCookie} from '../csrftoken';
 
 export type LoginFormDataType = {
     loginEmail: string

@@ -1,0 +1,4 @@
+.subheader {
+    grid-area: subheader;
+    background-color: darkcyan;
+}

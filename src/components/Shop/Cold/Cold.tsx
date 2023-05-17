@@ -1,7 +1,7 @@
 import React from 'react';
-import c from './ColdMeat.module.css';
+import c from './Cold.module.css';
 
-export const ColdMeat = (props: any) => {
+export const Cold = (props: any) => {
 
     return <div className={c.coldMeat}>
 
