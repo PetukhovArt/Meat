@@ -8,21 +8,27 @@ import {LoginFormDataType} from '../components/Forms/LoginReduxForm';
 export const setAuthUserData = (data: AuthData) => {
     return {type: 'SET-USER-DATA', data} as const
 }
+export const isAuth = (data: any) => {
+    return {type: 'SET-IS-AUTH', data} as const
+}
 
-export type AuthActionTypes = ReturnType<typeof setAuthUserData>
+
+export type AuthActionTypes =
+    ReturnType<typeof setAuthUserData> |
+    ReturnType<typeof isAuth>
 
 //THUNK CREATORS =======================================================
 
-export const getAuthTC = (): AppThunk => async dispatch => {
-    try {
-        const data = await authAPI.me()
-        if (data) {
-            dispatch(setAuthUserData(data))
-        }
-    } catch (e) {
-        throw new Error('fail in getting authMe')
-    }
-}
+// export const getAuthTC = (): AppThunk => async dispatch => {
+//     try {
+//         const data = await authAPI.me()
+//         if (data) {
+//             dispatch(setAuthUserData(data))
+//         }
+//     } catch (e) {
+//         throw new Error('fail in getting authMe')
+//     }
+// }
 
 export const registrationTC = ({...formData}: RegistrFormDataType): AppThunk => async dispatch => { //async function Thunk
     try {
@@ -35,19 +41,25 @@ export const registrationTC = ({...formData}: RegistrFormDataType): AppThunk => 
 export const loginTC = (email: string, password: string): AppThunk => async dispatch => {
     try {
         const data = await authAPI.login(email, password)
+        if (data.data.startsWith("Logged in")) {
+            console.log("Строка начинается с 'Logged in'");
+            dispatch(isAuth(true))
+        } else {
+            console.log("Строка НЕ начинается с 'Logged in'");
+        }
         // dispatch(getCopchProducts(data))
     } catch (e) {
         throw new Error('fail')
     }
 }
-export const logoutTC = (): AppThunk => async dispatch => { //async function Thunk
-    try {
-        const data = await authAPI.logout() //wait for response
-        // dispatch(getCopchProducts(data)) //then dispatch AC to setState
-    } catch (e) {
-        throw new Error('fail')
-    }
-}
+// export const logoutTC = (): AppThunk => async dispatch => { //async function Thunk
+//     try {
+//         const data = await authAPI.logout() //wait for response
+//         // dispatch(getCopchProducts(data)) //then dispatch AC to setState
+//     } catch (e) {
+//         throw new Error('fail')
+//     }
+// }
 
 //STATE =======================================================
 let initialState: AuthData = {
@@ -63,7 +75,9 @@ export const authReducer = (state: initialStateUserDataType = initialState, acti
     : initialStateUserDataType => {
 
     switch (action.type) {
-        case 'SET-USER-DATA':
+        // case 'SET-USER-DATA':
+        //     return {...state, ...action.data, isAuth: true}
+        case 'SET-IS-AUTH':
             return {...state, ...action.data, isAuth: true}
         default:
             return state;

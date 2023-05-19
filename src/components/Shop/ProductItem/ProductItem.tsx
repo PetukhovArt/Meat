@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import {useState} from 'react';
 
 type ProductPropsType = {
     image: string
@@ -16,6 +17,14 @@ type ProductPropsType = {
 
 export const ProductItem = (props: ProductPropsType) => {
     const {alt, height,image,title,description}=props
+
+    const [hundred, setHundred] = useState<number>(0);
+    const [thousand, setThousand] = useState<number>(0);
+
+
+    const onClickHandler = () => {
+
+    }
 
     return (
         <Card sx={{ width: 280 , height:280 }}>
@@ -36,7 +45,9 @@ export const ProductItem = (props: ProductPropsType) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary"
+                onClick={onClickHandler}
+                >
                     Купить
                 </Button>
             </CardActions>

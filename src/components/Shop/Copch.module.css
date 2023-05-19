@@ -1,0 +1,15 @@
+.copch {
+    grid-area: content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    position: relative;
+}
+.waiting {
+    height: 20px;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+}
