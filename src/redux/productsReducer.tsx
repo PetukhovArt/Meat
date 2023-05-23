@@ -4,13 +4,13 @@ import {AppThunk, RootState} from './store-redux';
 import {setLoadingStatusAC} from './appReducer';
 
 //ACTION CREATORS
-export const getCopchProductsAC = (copchItems: copchType[]) => {
+export const getCopchProductsAC = (copchItems: ProductCommon[]) => {
     return {type: 'GET-COPCH', copchItems} as const
 }
-export const getPolyProductsAC = (polyItems: polyType[]) => {
+export const getPolyProductsAC = (polyItems: ProductCommon[]) => {
     return {type: 'GET-POLY', polyItems} as const
 }
-export const getColdProductsAC = (coldItems: coldType[]) => {
+export const getColdProductsAC = (coldItems: ProductCommon[]) => {
     return {type: 'GET-COLD', coldItems} as const
 }
 
@@ -25,9 +25,8 @@ export const getCopchTC = (): AppThunk => async dispatch => { //async function T
     dispatch(setLoadingStatusAC('loading'))
     try {
         const data = await productsAPI.getCopch() //wait for response
-        console.log(data)
         dispatch(getCopchProductsAC(data)) //then dispatch AC to setState
-        dispatch(setLoadingStatusAC('idle'))
+        dispatch(setLoadingStatusAC('succeeded'))
     } catch (e) {
         throw new Error('fail')
     }
@@ -51,35 +50,23 @@ export const getColdTC = (): AppThunk => async dispatch => { //async function Th
 
 //STATE =======================================================
 
-type ProductCommon = {
+export type ProductCommon = {
     id: number
-    name_prod: string
+    name: string
+    description: string
     unit: string
     price: string
-    // description?: string
+    img: string | null
+    available: boolean
+    category: number
 }
 
-export type copchType = ProductCommon & {
-    img: string | null
-    // дополнительные свойства для товара 1
-};
-
-export type polyType = ProductCommon & {
-    img: string | null
-    // дополнительные свойства для товара 2
-};
-
-export type coldType = ProductCommon & {
-    img: string | null
-    // дополнительные свойства для товара 3
-};
 export type ProductsPageType = {
-    copch: copchType[]
-    poly: polyType[]
-    cold: coldType[]
+    copch: ProductCommon[]
+    poly: ProductCommon[]
+    cold: ProductCommon[]
 }
 
-// let initialState: Array<CopchProductType> = []
 let initialState: ProductsPageType = {
     copch: [],
     poly: [],

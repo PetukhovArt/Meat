@@ -3,24 +3,25 @@ import s from './App.module.css';
 import {Navbar} from './components/Navbar/Navbar';
 import {Header} from './components/Header/Header';
 import {Route, Routes} from 'react-router-dom';
-import {Copch} from './components/Shop/Copch';
-import {Poly} from './components/Shop/Poly';
+import {Copch} from './components/Products/Copch';
+import {Poly} from './components/Products/Poly';
 import {Login} from './components/Login/Login';
 import {Registration} from './components/Registration/Registration';
 import {Footer} from './components/Footer/Footer';
-import {Cold} from './components/Shop/Cold';
+import {Cold} from './components/Products/Cold';
 import {Basket} from './components/Basket/Basket';
 import {
     BASKET_ROUTE,
     COLD_ROUTE,
     COPCH_ROUTE,
-    LOGIN_ROUTE,
+    LOGIN_ROUTE, ORDERS_ROUTE,
     POLY_ROUTE,
     REGISTRATION_ROUTE,
     SHOP_ROUTE
 } from './utils/consts';
 import {useSelector} from 'react-redux';
 import {RootState, useAppDispatch} from './redux/store-redux';
+import {Orders} from './components/UserOrders/Orders';
 
 
 function App() {
@@ -33,7 +34,6 @@ function App() {
         <div className={s.appWrapper}>
             <Header/>
             <Navbar/>
-            {/*<Subheader/>*/}
             <div className={s.appContent}>
                 <Routes>
                     <Route index element={<Copch products={copchProduct} loadStatus={loadStatus}/>}/>
@@ -43,6 +43,7 @@ function App() {
                     <Route path={LOGIN_ROUTE} element={<Login/>}/>
                     <Route path={REGISTRATION_ROUTE} element={<Registration/>}/>
                     <Route path={BASKET_ROUTE} element={<Basket/>}/>
+                    <Route path={ORDERS_ROUTE} element={<Orders/>}/>
                     <Route path="*" element={<div>Page not found</div>}/>
                 </Routes>
             </div>

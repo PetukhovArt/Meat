@@ -7,17 +7,16 @@ import { reducer as formReducer } from 'redux-form'
 import {AuthActionTypes, authReducer} from './authReducer';
 import {ProductsActionTypes} from './productsReducer';
 import {ActionsAppType, appReducer} from './appReducer';
+import {OrdersActionTypes} from '../components/UserOrders/ordersReducer';
 
 //Type of new State (redux) , type of what rootReducer returns (it returns State)
 export type StoreReduxType=typeof store
 
 export const rootReducer = combineReducers({
     form: formReducer,
-
     productsPage: productsReducer,
     auth: authReducer,
     app: appReducer,
-
 })
 
 
@@ -27,7 +26,7 @@ export type AppDispatch = ThunkDispatch<RootState, any, AppActionsType>
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AppActionsType>
 // AppThunk: 1 - thunk returns void , full state APP , (extra args) , AnyAction
 export const useAppDispatch=()=> useDispatch<AppDispatch>()
-export type AppActionsType = ProductsActionTypes | AuthActionTypes | ActionsAppType
+export type AppActionsType = ProductsActionTypes | AuthActionTypes | ActionsAppType | OrdersActionTypes
 
 // @ts-ignore
 window.store = store

@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import c from './Copch.module.css';
-import {useDispatch, useSelector} from 'react-redux';
-import {copchType, getCopchTC} from '../../redux/productsReducer';
-import {RootState, useAppDispatch} from '../../redux/store-redux';
+import React, {useEffect} from 'react';
+import c from './Product.module.css';
+import {getCopchTC, ProductCommon} from '../../redux/productsReducer';
+import {useAppDispatch} from '../../redux/store-redux';
 import {ProductItem} from './ProductItem/ProductItem';
 import {Backdrop, CircularProgress, LinearProgress} from '@mui/material';
 import {RequestStatusType} from '../../redux/appReducer';
 
 type CopchPageType = {
-    products: copchType[]
+    products: ProductCommon[]
     loadStatus: RequestStatusType
 }
 
@@ -47,7 +46,7 @@ export const Copch = (props: CopchPageType) => {
                                         'https://m.dom-eda.com/uploads/images/catalog/item/f3f0e2744c/9fe501f69c_1000.jpg'
                                         : el.img}
                                 height={'120px'} alt={'item'}
-                                title={el.name_prod}
+                                title={el.name}
                                 description={el.price + ' рублей/кг'}
                             />
                         </div>

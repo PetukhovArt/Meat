@@ -1,5 +1,5 @@
 import React from 'react';
-import c from './Copch.module.css';
+import c from './Product.module.css';
 
 export const Cold = (props: any) => {
 

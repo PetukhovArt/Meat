@@ -1,6 +1,6 @@
 
 import React, {useEffect} from 'react';
-import c from './Copch.module.css';
+import c from './Product.module.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCopchTC} from '../../redux/productsReducer';
 import {RootState, useAppDispatch} from '../../redux/store-redux';

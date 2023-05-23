@@ -19,20 +19,9 @@ export type AuthActionTypes =
 
 //THUNK CREATORS =======================================================
 
-// export const getAuthTC = (): AppThunk => async dispatch => {
-//     try {
-//         const data = await authAPI.me()
-//         if (data) {
-//             dispatch(setAuthUserData(data))
-//         }
-//     } catch (e) {
-//         throw new Error('fail in getting authMe')
-//     }
-// }
-
 export const registrationTC = ({...formData}: RegistrFormDataType): AppThunk => async dispatch => { //async function Thunk
     try {
-        const data = await authAPI.reg({...formData}) //wait for response
+        const data = await authAPI.registration({...formData}) //wait for response
         // dispatch(getCopchProducts(data)) //then dispatch AC to setState
     } catch (e) {
         throw new Error('fail')
