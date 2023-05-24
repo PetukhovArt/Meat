@@ -11,6 +11,9 @@ export const setAuthUserData = (data: AuthData) => {
 export const isAuth = (data: any) => {
     return {type: 'SET-IS-AUTH', data} as const
 }
+export const deleteToken = () => {
+    return {type: 'DELETE-TOKEN'} as const
+}
 
 
 export type AuthActionTypes =
@@ -30,25 +33,20 @@ export const registrationTC = ({...formData}: RegistrFormDataType): AppThunk => 
 export const loginTC = (email: string, password: string): AppThunk => async dispatch => {
     try {
         const data = await authAPI.login(email, password)
-        if (data.data.startsWith("Logged in")) {
-            console.log("Строка начинается с 'Logged in'");
+        if (data.data.startsWith('Logged in')) {
+            console.log('Строка начинается с \'Logged in\'');
             dispatch(isAuth(true))
         } else {
-            console.log("Строка НЕ начинается с 'Logged in'");
+            console.log('Строка НЕ начинается с \'Logged in\'');
         }
         // dispatch(getCopchProducts(data))
     } catch (e) {
         throw new Error('fail')
     }
 }
-// export const logoutTC = (): AppThunk => async dispatch => { //async function Thunk
-//     try {
-//         const data = await authAPI.logout() //wait for response
-//         // dispatch(getCopchProducts(data)) //then dispatch AC to setState
-//     } catch (e) {
-//         throw new Error('fail')
-//     }
-// }
+export const logoutTC = (): AppThunk => async dispatch => { //async function Thunk
+    dispatch(deleteToken)
+}
 
 //STATE =======================================================
 let initialState: AuthData = {

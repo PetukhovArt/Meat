@@ -4,13 +4,13 @@ import {AppThunk, RootState} from './store-redux';
 import {setLoadingStatusAC} from './appReducer';
 
 //ACTION CREATORS
-export const getCopchProductsAC = (copchItems: ProductCommon[]) => {
+export const getCopchProductsAC = (copchItems: CommonProductType[]) => {
     return {type: 'GET-COPCH', copchItems} as const
 }
-export const getPolyProductsAC = (polyItems: ProductCommon[]) => {
+export const getPolyProductsAC = (polyItems: CommonProductType[]) => {
     return {type: 'GET-POLY', polyItems} as const
 }
-export const getColdProductsAC = (coldItems: ProductCommon[]) => {
+export const getColdProductsAC = (coldItems: CommonProductType[]) => {
     return {type: 'GET-COLD', coldItems} as const
 }
 
@@ -50,7 +50,7 @@ export const getColdTC = (): AppThunk => async dispatch => { //async function Th
 
 //STATE =======================================================
 
-export type ProductCommon = {
+export type CommonProductType = {
     id: number
     name: string
     description: string
@@ -62,15 +62,13 @@ export type ProductCommon = {
 }
 
 export type ProductsPageType = {
-    copch: ProductCommon[]
-    poly: ProductCommon[]
-    cold: ProductCommon[]
+    [key: string]: CommonProductType[]
 }
 
 let initialState: ProductsPageType = {
-    copch: [],
-    poly: [],
-    cold: []
+    [1]: [],
+    [2]: [],
+    [3]: []
 };
 
 //Reducer =======================================================
@@ -80,11 +78,11 @@ export const productsReducer = (state: ProductsPageType = initialState, action: 
 
     switch (action.type) {
         case 'GET-COPCH':
-            return {...state, copch: action.copchItems.map(el => ({...el}))}
+            return {...state, [1]: action.copchItems.map(el => ({...el}))}
         case 'GET-POLY':
-            return {...state, poly: action.polyItems.map(el => ({...el}))}
+            return {...state, [2]: action.polyItems.map(el => ({...el}))}
         case 'GET-COLD':
-            return {...state, cold: action.coldItems.map(el => ({...el}))}
+            return {...state, [3]: action.coldItems.map(el => ({...el}))}
         default:
             return state;
     }

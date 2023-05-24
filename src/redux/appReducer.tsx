@@ -1,12 +1,7 @@
-import {Dispatch} from 'redux';
-import {authAPI} from '../api/api';
-import {AppThunk, RootState} from './store-redux';
-import {RegistrFormDataType} from '../components/Forms/RegistrationReduxForm';
-import {LoginFormDataType} from '../components/Forms/LoginReduxForm';
+
 
 //ACTION CREATORS
 export const setLoadingStatusAC=(status: RequestStatusType)=> {
-    console.log(status)
     return {type: 'SET-LOADING', status} as const
 }
 
@@ -15,7 +10,7 @@ export const setLoadingStatusAC=(status: RequestStatusType)=> {
 
 //STATE =======================================================
 const initialState = {
-    status: 'loading' as RequestStatusType
+    status: 'idle' as RequestStatusType
 }
 //Reducer =======================================================
 export const appReducer = (state: InitialStateType = initialState, action: ActionsAppType): InitialStateType => {

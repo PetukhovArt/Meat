@@ -1,0 +1,20 @@
+.itemTitle {
+    height: 40px;
+    font-size: 15px;
+    font-family: sans-serif;
+    text-align: center;
+}
+.itemDescription {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 5px;
+    font-family: sans-serif;
+}
+.numericInput {
+    display: flex;
+}
+.numericInput input {
+    width: 30px;
+    text-align: center;
+}

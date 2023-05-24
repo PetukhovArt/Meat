@@ -34,6 +34,17 @@ export type OrderType = {
     quantity: number
 }
 
+const orderInitialState = {
+    'id': null,
+    'user_id': null,
+    'order_id': null,
+    'copch_product_id': null,
+    'cold_product_id': null,
+    'poly_product_id': null,
+    'price': null,
+    'quantity': null,
+}
+
 // let initialState: Array<CopchProductType> = []
 let initialState: OrderType[] = [
     // {

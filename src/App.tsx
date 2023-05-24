@@ -9,7 +9,6 @@ import {Login} from './components/Login/Login';
 import {Registration} from './components/Registration/Registration';
 import {Footer} from './components/Footer/Footer';
 import {Cold} from './components/Products/Cold';
-import {Basket} from './components/Basket/Basket';
 import {
     BASKET_ROUTE,
     COLD_ROUTE,
@@ -22,13 +21,14 @@ import {
 import {useSelector} from 'react-redux';
 import {RootState, useAppDispatch} from './redux/store-redux';
 import {Orders} from './components/UserOrders/Orders';
+import {ProgressBar} from './common/ProgressBar/ProgressBar';
+import {Cart} from './components/Cart/Cart';
+import {CommonProductType} from './redux/productsReducer';
 
 
 function App() {
 
-    const copchProduct = useSelector((state: RootState) => state.productsPage.copch)
-    const loadStatus = useSelector((state: RootState) => state.app.status)
-
+    const copchProduct = useSelector<RootState, CommonProductType[]>(state => state.productsPage[1])
 
     return (
         <div className={s.appWrapper}>
@@ -36,13 +36,13 @@ function App() {
             <Navbar/>
             <div className={s.appContent}>
                 <Routes>
-                    <Route index element={<Copch products={copchProduct} loadStatus={loadStatus}/>}/>
-                    <Route path={COPCH_ROUTE} element={<Copch products={copchProduct} loadStatus={loadStatus}/>}/>
+                    <Route index element={<Copch products={copchProduct} />}/>
+                    <Route path={COPCH_ROUTE} element={<Copch products={copchProduct}/>}/>
                     <Route path={POLY_ROUTE} element={<Poly/>}/>
                     <Route path={COLD_ROUTE} element={<Cold/>}/>
                     <Route path={LOGIN_ROUTE} element={<Login/>}/>
                     <Route path={REGISTRATION_ROUTE} element={<Registration/>}/>
-                    <Route path={BASKET_ROUTE} element={<Basket/>}/>
+                    <Route path={BASKET_ROUTE} element={<Cart/>}/>
                     <Route path={ORDERS_ROUTE} element={<Orders/>}/>
                     <Route path="*" element={<div>Page not found</div>}/>
                 </Routes>

@@ -1,0 +1,11 @@
+
+[data-theme='light'] {
+    --color: #000000;
+    --background: #FFFFFF;
+}
+
+
+[data-theme='dark'] {
+    --color: #FFFFFF;
+    --background: #212A34;
+}
